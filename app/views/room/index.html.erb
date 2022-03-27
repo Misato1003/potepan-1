@@ -1,0 +1,35 @@
+<h3>ユーザー情報一覧表</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>タイトル</th>
+            <th>開始日</th>
+            <th>終了日</th>
+            <th>終日</th>
+            <th>更新日時</th>
+            <th>確認</th>
+            <th>編集</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <% @room .each do |room| %>
+            <tr>
+                <td><%= room.id %></td>
+                <td><%= room.title %></td>
+                <td><%= room.first_day %></td>
+                <td><%= room.last_day %></td>
+                <td><%= room.last_check %></td>
+                <td><%= room.updated_at %></td>
+                <td><%= link_to "参照",room %></td>
+                <td><%= link_to "編集",[:edit,room] %></td>
+                <td><%= link_to "削除",room,method: :delete, data: {confirm: "本当に削除しますか?"} %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+
+<p><%= link_to"スケジュールの新規登録", :new_room %> 
